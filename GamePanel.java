@@ -4,16 +4,19 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class GamePanel  extends JPanel{
-
+    // اندازه هر خانه از شطرنج
     final int TILE_SIZE = 100;
 
+    // بازخوانی کردن نمایش دادن پنجره هر باز بعد از بسته شده بازی 
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
 
         for(int row = 0; row < 8;  row++){
             for(int col = 0; col < 8; col++){
+                // شرط  گذاشتن بالا سطر و ستون ها 
                 if((row + col ) % 2 == 0){
+                    // رسم کردن یک مربع 
                     g.setColor(Color.WHITE);
                 }else{
                     g.setColor(Color.DARK_GRAY);
