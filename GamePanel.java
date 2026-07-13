@@ -23,6 +23,15 @@ public class GamePanel  extends JPanel{
                 }
                 g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
             }
+              // اضافه کردن مهره با رنگ 
+            g.setColor(Color.RED);
+            g.fillOval(10, // فاصله مهره از راست 
+                        10,
+                        80,
+                        80);
+                         g.setColor(Color.RED);
+
+
         }
     }
 
