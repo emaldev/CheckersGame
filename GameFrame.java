@@ -13,6 +13,7 @@ public class GameFrame extends JFrame {
         // بستن کامل برنامه با زدن دکمه 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        // جلو گیری از تغییرات خود کار صفحه
         this.setResizable(false);
         this.setVisible(true);
     }
