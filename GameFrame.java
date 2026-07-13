@@ -9,13 +9,19 @@ public class GameFrame extends JFrame {
         // عنوان بازی 
         this.setTitle("Chekers Game.");
         // اندازه صفحه 
-        this.setSize(700, 700);
+        this.pack();
+        this.setLocationRelativeTo(null);
+        
         // بستن کامل برنامه با زدن دکمه 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         // جلو گیری از تغییرات خود کار صفحه
         this.setResizable(false);
         this.setVisible(true);
+        
+        
+       
     }
+    
     
 }

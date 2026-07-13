@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 public class GamePanel  extends JPanel{
     // اندازه هر خانه از شطرنج
-    final int TILE_SIZE = 100;
+    final int TILE_SIZE = 80;
 
     // بازخوانی کردن نمایش دادن پنجره هر باز بعد از بسته شده بازی 
     @Override
@@ -38,9 +38,9 @@ public class GamePanel  extends JPanel{
                     if((row + col ) % 2 != 0){
                         g.fillOval(
                             // محل افقی و عمودی مهره ها 
-                            col* TILE_SIZE + 10, row * TILE_SIZE + 10,
+                            col* TILE_SIZE + 8, row * TILE_SIZE + 8,
                             // عرض و ارتفاع مهره ها
-                             80, 80);
+                             64, 64);
                     }
                 }
             }
@@ -50,14 +50,20 @@ public class GamePanel  extends JPanel{
                 for(int col = 0; col < 8; col++){
 
                     if((row + col) % 2 != 0){
-                        g.fillOval(col * TILE_SIZE + 10 ,
-                            row * TILE_SIZE + 10  ,
-                             80, 80);
+                        g.fillOval(col * TILE_SIZE + 8,
+                            row * TILE_SIZE + 8  ,
+                             64, 64);
                     }
+                   
                 }
+                System.out.println(row); System.out.println(row);
             }
  
     }
+    @Override
+           public java.awt.Dimension getPreferredSize() {
+           return new java.awt.Dimension(640, 640);
+            }
 
     
 }
