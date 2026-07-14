@@ -48,6 +48,13 @@ public class GamePanel  extends JPanel{
                     g.setColor(Color.ORANGE);
                     g.fillOval(col * TILE_SIZE + 8, row * TILE_SIZE + 8, 64, 64);
                   }
+                  // اگر مهره انتخاب شده باشد این کار را انجام بده 
+                  if(row == selectedRow && col == selectedCol){
+                         // رنگ کادر 
+                    g.setColor(Color.GREEN);
+                       // رنگ کادر دور مهره 
+                    g.drawRect(col * TILE_SIZE , row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                  }
                 }
             }
         }
