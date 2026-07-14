@@ -108,12 +108,31 @@ public class GamePanel  extends JPanel{
                             // با تقسیم کردن به هر خانه شماره سطر بدست می آید 
                            int row = e.getY() / TILE_SIZE;
 
-                           selectedRow = row ;
-                           selectedCol = col;
+                           // اگر فبلا یک مهره انتخاب شده باشد 
+                           if(selectedRow != -1 && selectedCol != -1){
 
-                           System.out.println("Row: " + row + " Col: " + col);
+                            // اگر خانه مقصد خالی باشد 
+                            if(board[row][col] == 0){
+                                board[row][col] = board[selectedRow][selectedCol];
 
-                           repaint();
+                                board[selectedRow][selectedCol] = 0;
+
+                                selectedRow = -1;
+                                selectedCol = -1;
+                                repaint();
+                                return;
+
+                            }
+                           }
+  
+                           // انتخاب مهره ها 
+                           if(board[row][col] != 0){
+                            selectedRow = row;
+                            selectedCol = col;
+                            System.out.println("Row: " + row + ", Col: " + col);
+
+                            repaint();
+                           }
                            
                     }
                 });
