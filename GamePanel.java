@@ -13,11 +13,15 @@ public class GamePanel  extends JPanel{
     // true مهره آبی 
     // false مهره نارنجی 
     boolean yelloTurn = true;
+    // چاپ کردن نوبت 
+    String turnText = "Blue Turn";
              //اضافه کردن مهره ها به بازی 
              // 0 خالی 
              // 1 مهره زرد 
              // 2 مهره آبی 
     int[][] board= new int[8][8];
+    
+    
 
     // بازخوانی کردن نمایش دادن پنجره هر باز بعد از بسته شده بازی 
     @Override
@@ -34,6 +38,8 @@ public class GamePanel  extends JPanel{
                     g.setColor(Color.DARK_GRAY);
                 }
                 g.fillRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                 g.setColor(Color.BLACK);
+                    g.drawString(turnText, 10, 20);
                 
             }
           
@@ -64,6 +70,7 @@ public class GamePanel  extends JPanel{
                     g.setColor(Color.GREEN);
                        // رنگ کادر دور مهره 
                     g.drawRect(col * TILE_SIZE , row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                   
                   }
                 }
             }
@@ -127,6 +134,12 @@ public class GamePanel  extends JPanel{
                                 board[selectedRow][selectedCol] = 0;
                                 // تغییر نوبت بازیکن
                                 yelloTurn = !yelloTurn;
+                                // نوبت بازیکن ها 
+                                if(yelloTurn){
+                                    turnText = "Blue Turn";
+                                }else{
+                                    turnText = "Orange Turn";
+                                }
                                 // حذف انتخاب 
                                 selectedRow = -1;
                                 selectedCol = -1;
