@@ -113,17 +113,25 @@ public class GamePanel  extends JPanel{
 
                             // اگر خانه مقصد خالی باشد 
                             if(board[row][col] == 0){
+                                if (isValidMove(selectedRow, selectedCol, row, col)) {
+                                       // انتقال مهره 
                                 board[row][col] = board[selectedRow][selectedCol];
-
+                                 // خالی کردن خانه قبلی 
                                 board[selectedRow][selectedCol] = 0;
-
+                                // حذف انتخاب 
                                 selectedRow = -1;
                                 selectedCol = -1;
                                 repaint();
+                               
+                                }
                                 return;
 
+                                     }
+                        
+
+
                             }
-                           }
+                           
   
                            // انتخاب مهره ها 
                            if(board[row][col] != 0){
@@ -138,6 +146,40 @@ public class GamePanel  extends JPanel{
                 });
 
                       
+                }
+
+                // بررسی کردن حرکت قانونی مهرن در بازی 
+                public boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol){
+      
+
+                      // اگر خانه مقصد پر باشد 
+                    if(board[toRow][toCol]  != 0){
+                        return false;
+                    }
+                               // مهره زرد 
+                    if(board[fromRow][fromCol] == 1){
+                        
+                        // فقط یک خانه مورت رو به پایین 
+                        if(toRow == fromRow + 1 && 
+                            Math.abs(toCol - fromCol) == 1) {
+                                
+                                return true;
+                            }
+                        }
+                            // مهره نارنجی 
+                            if(board[fromRow][fromCol] == 2){
+                                 System.out.println("Form (" + fromRow + ", " + fromCol + ") To (" + toRow + "," + toCol +")" );
+
+                                // فقط یک خانه مورب رو با بالا
+                                if(toRow == fromRow -1 && 
+                                    Math.abs(toCol - fromCol) == 1) {
+                                        System.out.println("Valid Move");
+                                        return true;
+                                    }
+                                    
+                            }
+                            return false;
+                    
                 }
                     
                 
