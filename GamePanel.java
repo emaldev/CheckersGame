@@ -31,6 +31,26 @@ public class GamePanel  extends JPanel{
 
 
         }
+    
+           // مهره ها را با آرایه رسم می کنیم 
+           // تمام خانه های صفحه را بررسی می کنیم 
+            for(int row = 0; row < 8; row++){
+                for(int col = 0; col < 8; col++){
+
+                    if(board[row][col] == 1) {
+                        // رنگ مهره 
+                        g.setColor(Color.CYAN);
+                         // رسم مهره 
+                        g.fillOval(col * TILE_SIZE + 8, row * TILE_SIZE + 8, 64, 64);
+                    }
+                     // اگر مقدار خانه 2 باشد مهره نارنجی است 
+                  else if(board[row][col] == 2){
+                    g.setColor(Color.ORANGE);
+                    g.fillOval(col * TILE_SIZE + 8, row * TILE_SIZE + 8, 64, 64);
+                  }
+                }
+            }
+        }
 
     @Override
            public java.awt.Dimension getPreferredSize() {
