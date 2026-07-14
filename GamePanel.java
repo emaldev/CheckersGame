@@ -6,6 +6,9 @@ import javax.swing.JPanel;
 public class GamePanel  extends JPanel{
     // اندازه هر خانه از شطرنج
     final int TILE_SIZE = 80;
+    // خانه های انتخاب شده 
+    int selectedRow = -1;
+    int selectedCol = -1;
 
     // بازخوانی کردن نمایش دادن پنجره هر باز بعد از بسته شده بازی 
     @Override
@@ -30,7 +33,7 @@ public class GamePanel  extends JPanel{
 
         }
             //   قزمر اضافه کردن مهره با رنگ 
-            g.setColor(Color.YELLOW);
+            g.setColor(Color.CYAN);
             for(int row = 0; row < 3; row++){
                 for(int col = 0; col < 8; col++){
 
@@ -45,7 +48,7 @@ public class GamePanel  extends JPanel{
                 }
             }
             
-            g.setColor(Color.BLUE);
+            g.setColor(Color.ORANGE);
             for(int row = 5; row <8; row++){
                 for(int col = 0; col < 8; col++){
 
@@ -64,6 +67,31 @@ public class GamePanel  extends JPanel{
            public java.awt.Dimension getPreferredSize() {
            return new java.awt.Dimension(640, 640);
             }
+                  // 
+            public GamePanel(){
+                // کلیک موس را تشخیص میدهد 
+                this.addMouseListener(new java.awt.event.MouseAdapter() {
+                    // هربار دکمه موس که فشار داده می شود را اجرا می کند 
+                    @Override 
+                    public void mousePressed(java.awt.event.MouseEvent e) {
+                           // ستون شماره 
+                           int col = e.getX() / TILE_SIZE;
+                            // با تقسیم کردن به هر خانه شماره سطر بدست می آید 
+                           int row = e.getY() / TILE_SIZE;
+
+                           selectedRow = row ;
+                           selectedCol = col;
+
+                           System.out.println("Row: " + row + "Col: " + col);
+
+                           repaint();
+                    }
+                };
+
+                )}
+                    
+                
+            
 
     
 }
