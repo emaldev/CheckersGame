@@ -2,12 +2,22 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
+
 public class GamePanel  extends JPanel{
     // اندازه هر خانه از شطرنج
     final int TILE_SIZE = 80;
     // خانه های انتخاب شده 
     int selectedRow = -1;
     int selectedCol = -1;
+    // نوبت بازیکن 
+    // true مهره آبی 
+    // false مهره نارنجی 
+    boolean yelloTurn = true;
+             //اضافه کردن مهره ها به بازی 
+             // 0 خالی 
+             // 1 مهره زرد 
+             // 2 مهره آبی 
+    int[][] board= new int[8][8];
 
     // بازخوانی کردن نمایش دادن پنجره هر باز بعد از بسته شده بازی 
     @Override
@@ -63,11 +73,8 @@ public class GamePanel  extends JPanel{
            public java.awt.Dimension getPreferredSize() {
            return new java.awt.Dimension(640, 640);
             }
-             //اضافه کردن مهره ها به بازی 
-             // 0 خالی 
-             // 1 مهره زرد 
-             // 2 مهره آبی 
-            int[][] board= new int[8][8];
+             
+            
              // ساخت صفحه اولیه بازی    
             public void setupBoard(){
                   
@@ -118,6 +125,8 @@ public class GamePanel  extends JPanel{
                                 board[row][col] = board[selectedRow][selectedCol];
                                  // خالی کردن خانه قبلی 
                                 board[selectedRow][selectedCol] = 0;
+                                // تغییر نوبت بازیکن
+                                yelloTurn = !yelloTurn;
                                 // حذف انتخاب 
                                 selectedRow = -1;
                                 selectedCol = -1;
@@ -134,7 +143,10 @@ public class GamePanel  extends JPanel{
                            
   
                            // انتخاب مهره ها 
-                           if(board[row][col] != 0){
+                           if(
+                           (yelloTurn && board[row][col] == 1) || 
+                           (!yelloTurn && board[row][col] == 2)
+                           ){
                             selectedRow = row;
                             selectedCol = col;
                             System.out.println("Row: " + row + ", Col: " + col);
@@ -147,6 +159,7 @@ public class GamePanel  extends JPanel{
 
                       
                 }
+                
 
                 // بررسی کردن حرکت قانونی مهرن در بازی 
                 public boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol){
